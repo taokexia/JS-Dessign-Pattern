@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>虚拟代理实现图片预加载</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var myImage = (function() {
+        var imgNode = document.createElement('img');
+        document.body.appendChild(imgNode);
+        return {
+            setSrc: function(src) {
+                imgNode.src = src;
+            }
+        }
+    })();
+    // 代理，先显示本地图片，加载完成后显示网络图片
+    var proxyImage = (function() {
+        var img = new Image;
+        img.onload = function() {
+            myImage.setSrc(this.src);
+        }
+        return {
+            setSrc: function(src) {
+                myImage.setSrc('loading.jpg');
+                img.src = src;
+            }
+        }
+    })();
+    proxyImage.setSrc('https://p.qpic.cn/music_cover/Fe6emiag6IuVbMib3oN6yctRX8ZBICoa4liaYZkwZoSCaJdw7tOW5bCiaA/300?n=1');
+</script>
+
+</html>

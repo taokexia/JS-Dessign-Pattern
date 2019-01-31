@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代理和接口一致性</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 如果代理对象和本体对象都为一个函数，函数必然都能被执行，则可以认为他们也具有一致的“接口”
+    var myImage = (function() {
+        var imgNode = document.createElement('img');
+        document.body.appendChild(imgNode);
+        // 返回函数
+        return function(src) {
+            imgNode.src = src;
+        }
+    })();
+    var proxyImage = (function() {
+        var img = new Image;
+        img.onload = function() {
+            myImage(this.src);
+        }
+        return function(src) {
+            myImage('loading.jpg');
+            img.src = src;
+
+        }
+    })();
+    proxyImage.setSrc('https://p.qpic.cn/music_cover/Fe6emiag6IuVbMib3oN6yctRX8ZBICoa4liaYZkwZoSCaJdw7tOW5bCiaA/300?n=1');
+</script>
+
+</html>
