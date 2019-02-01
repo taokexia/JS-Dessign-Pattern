@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块间通信</title>
+</head>
+
+<body>
+    <button id="count">点我</button>
+    <div id="show"></div>
+
+</body>
+<script>
+    // 通用发布-订阅模式
+    var Event = (function() {
+        var clientList = {},
+            listen,
+            trigger,
+            remove;
+        listen = function(key, fn) {
+            if (!clientList[key]) {
+                clientList[key] = [];
+            }
+            clientList[key].push(fn);
+        };
+        trigger = function() {
+            var key = Array.prototype.shift.call(arguments),
+                fns = clientList[key];
+            if (!fns || fns.length === 0) {
+                return false;
+            }
+            for (var i = 0, fn; fn = fns[i++];) {
+                fn.apply(this, arguments);
+            }
+        };
+        remove = function(key, fn) {
+            var fns = clientList[key];
+            if (!fns) {
+                return false;
+            }
+            if (!fn) {
+                fns && (fns.length = 0);
+            } else {
+                for (var l = fns.length - 1; l >= 0; l--) {
+                    var _fn = fns[l];
+                    if (_fn === fn) {
+                        fns.splice(l, 1);
+                    }
+                }
+            }
+        };
+        return {
+            listen: listen,
+            trigger: trigger,
+            remove: remove
+        }
+    })();
+    // 模块a
+    var a = (function() {
+        var count = 0;
+        var button = document.getElementById('count');
+        button.onclick = function() {
+            Event.trigger('add', count++);
+        }
+    })();
+    // 模块b
+    var b = (function() {
+        var div = document.getElementById('show');
+        Event.listen('add', function(count) {
+            div.innerHTML = count;
+        });
+    })();
+</script>
+
+</html>
