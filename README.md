@@ -19,7 +19,13 @@
 
 - [代理模式I](./Proxy/ProxyI.js)
 - [代理模式II](./Proxy/ProxyII.js)
-- [代理模式III](./Proxy/ProxyIII.js)
-- [代理模式IV](./Proxy/ProxyIV.js)
-- [代理模式V](./Proxy/ProxyV.js)
+- [代理模式III](./Proxy/ProxyIII.html)
+- [代理模式IV](./Proxy/ProxyIV.html)
+- [代理模式V](./Proxy/ProxyV.html)
 - [代理模式VI](./Proxy/ProxyVI.js)
+
+## 迭代器模式
+
+- [迭代器模型I](./Iterator/IteratorI.js)
+- [迭代器模型II](./Iterator/IteratorII.js)
+- [迭代器模型III](./Iterator/IteratorIII.js)
