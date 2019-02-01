@@ -29,3 +29,11 @@
 - [迭代器模型I](./Iterator/IteratorI.js)
 - [迭代器模型II](./Iterator/IteratorII.js)
 - [迭代器模型III](./Iterator/IteratorIII.js)
+
+## 发布-订阅模式
+
+- [发布订阅模式I](./PublishSubscribe/PublishSubscribeI.js)
+- [发布订阅模式II](./PublishSubscribe/PublishSubscribeII.js)
+- [发布订阅模式III](./PublishSubscribe/PublishSubscribeIII.js)
+- [发布订阅模式IV](./PublishSubscribe/PublishSubscribeIV.html)
+- [发布订阅模式V](./PublishSubscribe/PublishSubscribeV.js)
