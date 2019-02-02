@@ -57,3 +57,10 @@
 - [模板方法I](./Template/TemplateI.js)
 - [模板方法II](./Template/TemplateII.html)
 - [模板方法III](./Template/TemplateIII.js)
+
+## 享元模式
+
+- [享元模式I](./Flyweight/FlyweightI.html)
+- [享元模式II](./Flyweight/FlyweightII.html)
+- [享元模式III](./Flyweight/FlyweightIII.html)
+- [享元模式IV](./Flyweight/FlyweightIV.html)

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通用对象池</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 对象池跟享元模式的思想相似
+    // 但没有分离内部状态和外部状态的过程
+    var objectPoolFactory = function(createObjFn) {
+        var objectPool = [];
+        return {
+            create: function() {
+                var obj = objectPool.length === 0 ?
+                    createObjFn.apply(this, arguments) : objectPool.shift();
+                return obj;
+            },
+            recover: function(obj) {
+                objectPool.push(obj);
+
+            }
+        }
+    };
+
+    var iframeFactory = objectPoolFactory(function() {
+        var iframe = document.createElement('iframe');
+        document.body.appendChild(iframe);
+        iframe.onload = function() {
+            iframe.onload = null; // 防止iframe 重复加载的bug
+            iframeFactory.recover(iframe); // iframe 加载完成之后回收节点
+        }
+        return iframe;
+    });
+
+    var iframe1 = iframeFactory.create();
+    iframe1.src = 'http://baidu.com';
+    var iframe2 = iframeFactory.create();
+    iframe2.src = 'http://QQ.com';
+    setTimeout(function() {
+        var iframe3 = iframeFactory.create();
+        iframe3.src = 'http://163.com';
+    }, 3000);
+</script>
+
+</html>
