@@ -37,3 +37,17 @@
 - [发布订阅模式III](./PublishSubscribe/PublishSubscribeIII.js)
 - [发布订阅模式IV](./PublishSubscribe/PublishSubscribeIV.html)
 - [发布订阅模式V](./PublishSubscribe/PublishSubscribeV.js)
+
+## 命令模式
+
+- [命令模式I](./Command/CommandI.html)
+- [命令模式II](./Command/CommandII.html)
+- [命令模式III](./Command/CommandIII.html)
+- [命令模式IV](./Command/CommandIV.html)
+- [命令模式V](./Command/CommandV.js)
+
+## 组合模式
+
+- [组合模式I](./MacroCommand/MacroCommandI.html)
+- [组合模式II](./MacroCommand/MacroCommandII.js)
+- [组合模式III](./MacroCommand/MacroCommandIII.js)
