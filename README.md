@@ -51,3 +51,9 @@
 - [组合模式I](./MacroCommand/MacroCommandI.html)
 - [组合模式II](./MacroCommand/MacroCommandII.js)
 - [组合模式III](./MacroCommand/MacroCommandIII.js)
+
+## 模板方法
+
+- [模板方法I](./Template/TemplateI.js)
+- [模板方法II](./Template/TemplateII.html)
+- [模板方法III](./Template/TemplateIII.js)
