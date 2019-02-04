@@ -7,13 +7,13 @@ var Event = (function(){
         var _listen,
         _trigger,
         _remove,
-        _slice = Array.prototype.slice,
-        _shift = Array.prototype.shift,
-        _unshift = Array.prototype.unshift,
+        _slice = Array.prototype.slice, // 绑定原生Array函数
+        _shift = Array.prototype.shift, // 绑定原生Array函数
+        _unshift = Array.prototype.unshift, // 绑定原生Array函数
         namespaceCache = {},
         _create,
         find,
-        each = function( ary, fn ){
+        each = function( ary, fn ){  // 迭代器
             var ret;
             for ( var i = 0, l = ary.length; i < l; i++ ){
                 var n = ary[i];
@@ -21,13 +21,13 @@ var Event = (function(){
             }
             return ret;
         };
-        _listen = function( key, fn, cache ){
+        _listen = function( key, fn, cache ){ // 添加监听
             if ( !cache[ key ] ){
                 cache[ key ] = [];
             }
             cache[key].push( fn );
         };
-        _remove = function( key, cache ,fn){
+        _remove = function( key, cache ,fn){ // 移除监听
             if ( cache[ key ] ){
                 if( fn ){
                     for( var i = cache[ key ].length; i >= 0; i-- ){
@@ -40,7 +40,7 @@ var Event = (function(){
                 }
             }
         };
-        _trigger = function(){
+        _trigger = function(){ // 触发事件
             var cache = _shift.call(arguments),
             key = _shift.call(arguments),
             args = arguments,
@@ -54,7 +54,7 @@ var Event = (function(){
                 return this.apply( _self, args );
             });
         };
-        _create = function( namespace ){
+        _create = function( namespace ){ // 创建命名空间
             var namespace = namespace || _default;
             var cache = {},
             offlineStack = [], // 离线事件

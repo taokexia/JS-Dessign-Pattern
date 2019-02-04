@@ -64,3 +64,25 @@
 - [享元模式II](./Flyweight/FlyweightII.html)
 - [享元模式III](./Flyweight/FlyweightIII.html)
 - [享元模式IV](./Flyweight/FlyweightIV.html)
+
+## 职责链模型
+
+- [职责链模型I](./ChainOfResponsibilityI.js)
+- [职责链模型II](./ChainOfResponsibilityII.js)
+- [职责链模型III](./ChainOfResponsibilityIII.js)
+
+## 中介者模式
+
+- [中介者模式](./Mediator/MediatorI.js)
+
+## 状态模式
+
+- [状态模式I](./State/StateI.html)
+- [状态模式II](./State/StateII.html)
+- [状态模式III](./State/StateIII.html)
+- [状态模式IV](./State/StateIV.html)
+
+## 适配器模式
+
+- [适配器模式I](./Adapter/AdapterI.js)
+- [适配器模式II](./Adapter/AdapterII.js)

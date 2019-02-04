@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>装饰者模式</title>
+</head>
+
+<body>
+    <button id="button">点击案例</button>
+</body>
+<script>
+    // 第一种写法
+    Function.prototype.before = function(beforefn) {
+        var __self = this;
+        return function() {
+            beforefn.apply(this, arguments);
+            return __self.apply(this, arguments);
+        }
+    }
+    Function.prototype.after = function(afterfn) {
+        var __self = this;
+        return function() {
+            var ret = __self.apply(this.arguments);
+            afterfn(this, arguments);
+            return ret;
+        }
+    }
+    document.getElementById = document.getElementById.before(function() {
+        alert('得到Button');
+    });
+    var button = document.getElementById('button');
+
+    console.log(button);
+
+    // 修改onload方法
+    window.onload = function() {
+        alert('先输出的1');
+    }
+    window.onload = (window.onload || function() {}).after(function() {
+        alert(2);
+    }).after(function() {
+        alert(3);
+    }).after(function() {
+        alert(4);
+    });
+
+    // 第二种写法
+    var before = function(fn, beforefn) {
+        return function() {
+            beforefn.apply(this, arguments);
+            return fn.apply(this, arguments);
+        }
+    }
+    var a = before(
+        function() {
+            alert('第二种加载3')
+        },
+        function() {
+            alert('第二种加载2')
+        }
+    );
+    a = before(a, function() {
+        alert('第二种加载1');
+    });
+    a(); // 输出 1 2 3
+</script>
+
+</html>
